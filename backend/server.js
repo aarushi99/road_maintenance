@@ -1,8 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
 const markerRoutes = require("./routes/marker");
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");

@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.get("/markers", markerController.getMarker);
 
+router.post("/postmarker", markerController.postMarker);
+
 module.exports = router;
