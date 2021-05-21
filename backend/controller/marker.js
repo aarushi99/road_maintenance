@@ -3,6 +3,11 @@ const MarkerModel = require("../models/Marker");
 exports.getMarkers = (req, res, next) => {
 	MarkerModel.find()
 		.then((markers) => {
+			console.log("Fetched markers successfully");
+			markers.map((marker) => {
+				marker.latitude = marker.latitude / 10000;
+				marker.longitude = marker.longitude / 10000;
+			});
 			res.status(200).json({
 				message: "Fetched markers successfully",
 				markers: markers,
