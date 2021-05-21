@@ -1,25 +1,25 @@
 .container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
 }
 .container-map {
-  display: flex;
-  height: 90vh;
+	display: flex;
+	height: 90vh;
 }
 .container-map-box {
-  border: 5px #ccc solid;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-    0 16px 16px rgba(0, 0, 0, 0.12);
-  margin: 20px;
-  margin-right: 0;
-  flex: 0.7;
-  padding: 0;
+	border: 5px #ccc solid;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+		0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+		0 16px 16px rgba(0, 0, 0, 0.12);
+	margin: 20px;
+	margin-right: 0;
+	flex: 0.7;
+	padding: 0;
 }
 
 .container-map-legend {
-  border: 5px #ccc solid;
-  flex: 0.3;
-  margin: 20px;
+	border: 5px #ccc solid;
+	flex: 0.3;
+	margin: 20px;
 }
