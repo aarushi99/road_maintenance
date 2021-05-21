@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const markerSchema = new Schema({
 	latitude: {
-		type: Schema.Types.Decimal128,
+		type: Number,
 		required: true,
 	},
 	longitude: {
-		type: Schema.Types.Decimal128,
+		type: Number,
 		required: true,
 	},
 	no_of_flags: {

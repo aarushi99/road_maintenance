@@ -4,7 +4,7 @@ const markerController = require("../controller/marker.js");
 
 const router = express.Router();
 
-router.get("/markers", markerController.getMarker);
+router.get("/markers", markerController.getMarkers);
 
 router.post("/postmarker", markerController.postMarker);
 

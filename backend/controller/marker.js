@@ -1,28 +1,26 @@
-const Marker = require("../models/Marker");
+const MarkerModel = require("../models/Marker");
 
-exports.getMarker = (req, res, next) => {
-	res.status(200).json({
-		markers: [
-			{
-				latitude: 30.7333,
-				longitude: 76.7794,
-				no_of_flags: 4,
-				priority: "low",
-				isCompleted: false,
-				address: "hello there",
-				isFalse: false,
-			},
-		],
-	});
+exports.getMarkers = (req, res, next) => {
+	MarkerModel.find()
+		.then((markers) => {
+			res.status(200).json({
+				message: "Fetched markers successfully",
+				markers: markers,
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 exports.postMarker = (req, res, next) => {
-	const latitude = req.body.latitude;
-	const longitude = req.body.longitude;
+	const latitude = Math.round(req.body.latitude * 10000);
+	const longitude = Math.round(req.body.longitude * 10000);
 	const priority = req.body.priority;
 	const address = req.body.address;
+	const filter = { latitude: latitude, longitude: longitude };
 
-	const marker = new Marker({
+	const new_marker = new MarkerModel({
 		latitude: latitude,
 		longitude: longitude,
 		no_of_flags: 0,
@@ -31,14 +29,39 @@ exports.postMarker = (req, res, next) => {
 		address: address,
 		isFalse: false,
 	});
-	marker
-		.save()
+
+	MarkerModel.findOne(filter)
 		.then((result) => {
-			console.log("Marker Added Successfully");
-			res.status(201).json({
-				message: "Marker created successfully",
-				marker: result,
-			});
+			if (!result) {
+				new_marker
+					.save()
+					.then((result_marker) => {
+						console.log("Marker Added Successfully");
+						res.status(201).json({
+							message: "Marker created successfully",
+							marker: result_marker,
+						});
+					})
+					.catch((err1) => {
+						console.log(err1);
+					});
+			} else {
+				result.no_of_flags = result.no_of_flags + 1;
+				result
+					.save()
+					.then((found_marker) => {
+						console.log("Marker Updated successfully");
+						res.status(201).json({
+							message: "Marker Updated successfully",
+							marker: found_marker,
+						});
+					})
+					.catch((err2) => {
+						console.log(err2);
+					});
+			}
 		})
-		.catch((err) => {});
+		.catch((err3) => {
+			console.log(err3);
+		});
 };
