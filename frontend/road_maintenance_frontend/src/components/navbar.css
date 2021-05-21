@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  min-height: 10vh;
+  background-color: #74b9ff;
+}
+
+.header-left {
+  flex: 0.1;
+  /* background-color: red; */
+  align-self: center;
+  text-align: center;
+}
+.header-middle {
+  flex: 0.8;
+  align-self: center;
+  /* background-color: blue; */
+}
+
+.header-right {
+  flex: 0.1;
+  align-self: center;
+  text-align: center;
+  /* background-color: pink; */
+}
