@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./navbar";
 import "./home.css";
 import Map from "./map";
+import Listview from "./listView"
 
 function Home() {
 	return (
@@ -10,7 +11,7 @@ function Home() {
 				<div className="container-map-box">
 					<Map></Map>
 				</div>
-				<div className="container-map-legend">LEGEND</div>
+				<div className="container-map-legend"><Listview></Listview></div>
 			</div>
 		</div>
 	);
