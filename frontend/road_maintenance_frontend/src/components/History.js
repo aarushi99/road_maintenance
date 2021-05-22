@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ListItem from "./listItem";
 import "./History.css";
-import Navbar from "./navbar.js";
 
 function History() {
-	return (
-		<div>
-			<h1>History</h1>
-		</div>
-	);
+  const [markerList, setMarkerList] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/history")
+      .then((result) => {
+        if (result.status !== 200) {
+          throw new Error("Failed to fetch history");
+        }
+        return result.json();
+      })
+      .then((resData) => {
+        resData.marker_history.map((marker) => {
+          setMarkerList((markerList) => [
+            ...markerList,
+            <ListItem
+              latitude={marker.latitude}
+              longitude={marker.longitude}
+              address={marker.address}
+              priority="low"
+              timestamp={marker.createdAt}
+            ></ListItem>,
+          ]);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  return <div>{markerList}</div>;
 }
 
 export default History;
