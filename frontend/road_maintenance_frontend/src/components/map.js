@@ -17,7 +17,11 @@ function MapBox(props) {
 	const [markerList, setMarkerList] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:8080/markers/".concat(mId))
+		fetch("http://localhost:8080/markers/".concat(mId), {
+			headers: {
+			  Authorization: 'Bearer ' + props.token
+			}
+		  })
 			.then((result) => {
 				//console.log("result : ", result);
 				if (result.status !== 200) {

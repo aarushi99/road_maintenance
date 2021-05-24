@@ -4,10 +4,14 @@ import "./History.css";
 
 function History(props) {
   const [markerList, setMarkerList] = useState([]);
-  const { mId } = props;
-  console.log("mid history component :", mId);
+  // const { mId } = props;
+  // console.log("mid history component :", mId);
   useEffect(() => {
-    fetch("http://localhost:8080/history/".concat(mId))
+    fetch("http://localhost:8080/history/".concat(props.mId), {
+      headers: {
+        Authorization: "Bearer " + props.token,
+      },
+    })
       .then((result) => {
         if (result.status !== 200) {
           throw new Error("Failed to fetch history");
