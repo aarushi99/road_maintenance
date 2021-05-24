@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map from "./map";
 import ListItem from "./listItem";
 import ListView from "./listView";
+import History from "./History"
 
 function MarkerDetail(props) {
 	const params = props.match.params;
@@ -13,7 +14,7 @@ function MarkerDetail(props) {
 				</div>
 				<div className="container-map-legend">
 					<h3>Marker History</h3>
-					<ListView mId={params.mId}></ListView>
+					<History mId={params.mId}></History>
 				</div>
 			</div>
 		</div>

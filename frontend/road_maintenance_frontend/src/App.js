@@ -11,32 +11,34 @@ import Contact from "./components/Contact";
 import MarkerDetail from "./components/MarkerDetail";
 
 function App() {
-	const [user, setUser] = useState(true);
-	return (
-		<Router>
-			{!user ? (
-				<Login />
-			) : (
-				<div className="main-container">
-					<div className="main-container-navbar">
-						<Navbar />
-					</div>
-					<div className="main-container-body">
-						<Switch>
-							<Route path="/history" component={History} />
-							<Route path="/history" component={History} />
-							<Route path="/aboutus" component={AboutUs} />
-							<Route path="/help" component={Help} />
-							<Route path="/contact" component={Contact} />
-							<Route path="/home" component={Home} />
-							<Route path="/:mId" component={MarkerDetail} />
-							<Route path="/" component={Home} />
-						</Switch>
-					</div>
-				</div>
-			)}
-		</Router>
-	);
+  const [user, setUser] = useState(true);
+  return (
+    <Router>
+      {!user ? (
+        <Login />
+      ) : (
+        <div className="main-container">
+          <div className="main-container-navbar">
+            <Navbar />
+          </div>
+          <div className="main-container-body">
+            <Switch>
+              <Route
+                path="/history"
+                component={() => <History mId=""></History>}
+              />
+              <Route path="/aboutus" component={AboutUs} />
+              <Route path="/help" component={Help} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/home" component={Home} />
+              <Route path="/:mId" component={MarkerDetail} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </div>
+        </div>
+      )}
+    </Router>
+  );
 }
 
 export default App;
