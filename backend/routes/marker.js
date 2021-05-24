@@ -5,9 +5,9 @@ const isAuth = require("../middleware/is-auth");
 
 const router = express.Router();
 
-router.get("/markers", isAuth, markerController.getMarkers);
+router.get("/", isAuth, markerController.getMarkers);
 
-router.get("/markers/:mId", isAuth, markerController.getMarkerDetail);
+router.get("/:mId", isAuth, markerController.getMarkerDetail);
 
 router.post("/postmarker", isAuth, markerController.postMarker);
 

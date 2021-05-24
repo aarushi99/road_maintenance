@@ -20,8 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", markerRoutes);
-app.use("/", historyRoutes);
+app.use("/markers", markerRoutes);
+app.use("/history", historyRoutes);
 app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
