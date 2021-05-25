@@ -21,16 +21,13 @@ import LoginPage from "./components/Auth/Login";
 import SignupPage from "./components/Auth/Signup";
 
 function App() {
-  //   const [user, setUser] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const [authLoading, setAuthLoading] = useState(false);
   const history = createBrowserHistory();
-  //  const history = useHistory();
 
   useEffect(() => {
-    // const history = useHistory();
     const token_ = localStorage.getItem("token");
     const expiryDate = localStorage.getItem("expiryDate");
     if (!token || !expiryDate) {
@@ -47,14 +44,11 @@ function App() {
     setToken(token_);
     setUserId(userId_);
     setAutoLogout(remainingMilliseconds);
-    // this.setState({ isAuth: true, token: token, userId: userId });
-    // this.setAutoLogout(remainingMilliseconds);
   }, []);
 
   const logoutHandler = () => {
     setIsAuth(false);
     setToken(null);
-    // this.setState({ isAuth: false, token: null });
     localStorage.removeItem("token");
     localStorage.removeItem("expiryDate");
     localStorage.removeItem("userId");
@@ -62,8 +56,6 @@ function App() {
 
   const loginHandler = (event, authData) => {
     event.preventDefault();
-    console.log("Hello tonu");
-    // this.setState({ authLoading: true });
     setAuthLoading(true);
     fetch("http://localhost:8080/auth/login", {
       method: "POST",
@@ -86,18 +78,13 @@ function App() {
         return res.json();
       })
       .then((resData) => {
-        console.log("resData", resData);
-        setIsAuth(true);
-        console.log("after login isAuth: ", isAuth);
+       // console.log("resData", resData);
         setToken(resData.token);
-        setAuthLoading(false);
         setUserId(resData.userId);
-        // this.setState({
-        //   isAuth: true,
-        //   token: resData.token,
-        //   authLoading: false,
-        //   userId: resData.userId
-        // });
+        setIsAuth(true);
+        // console.log("after login isAuth: ", isAuth);
+
+        setAuthLoading(false);
         localStorage.setItem("token", resData.token);
         console.log("token saved");
         localStorage.setItem("userId", resData.userId);
@@ -112,11 +99,6 @@ function App() {
       .catch((err) => {
         console.log(err);
         console.log("couldn't login, tonu");
-        // this.setState({
-        //   isAuth: false,
-        //   authLoading: false,
-        //   error: err
-        // });
         setIsAuth(false);
         setAuthLoading(false);
       });
@@ -124,7 +106,6 @@ function App() {
 
   const signupHandler = (event, authData) => {
     event.preventDefault();
-    // this.setState({ authLoading: true });
     setAuthLoading(true);
     fetch("http://localhost:8080/auth/signup", {
       method: "PUT",
@@ -150,7 +131,7 @@ function App() {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
+        // console.log(resData);
         setIsAuth(false);
         setAuthLoading(false);
       })
@@ -239,7 +220,7 @@ function App() {
               path="/home"
               exact
               render={(props) => (
-                <Home {...props} userId={userId} token={token}></Home>
+                <Home {...props} mId="" userId={userId} token={token}></Home>
               )}
             />
             <Route
@@ -257,7 +238,7 @@ function App() {
               path="/"
               exact
               render={(props) => (
-                <Home {...props} userId={userId} token={token}></Home>
+                <Home {...props} mId="" userId={userId} token={token}></Home>
               )}
             />
           </Switch>
