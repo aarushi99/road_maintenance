@@ -78,7 +78,7 @@ function App() {
         return res.json();
       })
       .then((resData) => {
-       // console.log("resData", resData);
+        // console.log("resData", resData);
         setToken(resData.token);
         setUserId(resData.userId);
         setIsAuth(true);
@@ -223,6 +223,7 @@ function App() {
                 <Home {...props} mId="" userId={userId} token={token}></Home>
               )}
             />
+
             <Route
               path="/:mId"
               exact
