@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import './Auth.css';
+import "./Auth.css";
 
-const auth = props => <section className="auth-form">{props.children}</section>;
+const auth = (props) => (
+	<div className="main-login-container">
+		<section className="auth-form">{props.children}</section>
+	</div>
+);
 
 export default auth;
