@@ -26,7 +26,7 @@ function Navbar(props) {
           History
         </div>
       </div>
-      <div className="header-title header-item">Road Maintainence System</div>
+      <div className="header-title">Road Maintainence System</div>
 
       <div className="header-right">
         <div
