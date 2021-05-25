@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Map from "./map";
-import ListItem from "./listItem";
-import ListView from "./listView";
 import History from "./History";
 
 function MarkerDetail(props) {
