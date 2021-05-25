@@ -4,6 +4,7 @@ import Input from "../Form/Input/Input";
 import Button from "../Button/Button";
 import { required, length, email } from "../../util/validators";
 import Auth from "./Auth";
+import logo from "../../starbucks-logo-4.png";
 import "./Login.css";
 
 class Login extends Component {
@@ -67,43 +68,52 @@ class Login extends Component {
 	render() {
 		return (
 			<Auth>
-				<div className="login-main-contianer-title">
-					Please sign in to continue
+				<div className="login-container">
+					<div className="form-signin text-center m-0">
+						<img class="mb-4" src={logo} alt="" width="75" height="75" />
+						<div className="h4 mb-3 fw-normal text-center">
+							Please sign in
+						</div>
+						<form
+							onSubmit={(e) =>
+								this.props.onLogin(e, {
+									email: this.state.loginForm.email.value,
+									password: this.state.loginForm.password.value,
+								})
+							}
+						>
+							<Input
+								id="email"
+								label="Email Address"
+								type="email"
+								control="input"
+								onChange={this.inputChangeHandler}
+								onBlur={this.inputBlurHandler.bind(this, "email")}
+								value={this.state.loginForm["email"].value}
+								valid={this.state.loginForm["email"].valid}
+								touched={this.state.loginForm["email"].touched}
+							/>
+							<Input
+								id="password"
+								label="Password"
+								type="password"
+								control="input"
+								onChange={this.inputChangeHandler}
+								onBlur={this.inputBlurHandler.bind(this, "password")}
+								value={this.state.loginForm["password"].value}
+								valid={this.state.loginForm["password"].valid}
+								touched={this.state.loginForm["password"].touched}
+							/>
+							<Button
+								design="raised"
+								type="submit"
+								loading={this.props.loading}
+							>
+								Login
+							</Button>
+						</form>
+					</div>
 				</div>
-				<form
-					onSubmit={(e) =>
-						this.props.onLogin(e, {
-							email: this.state.loginForm.email.value,
-							password: this.state.loginForm.password.value,
-						})
-					}
-				>
-					<Input
-						id="email"
-						label="Your E-Mail"
-						type="email"
-						control="input"
-						onChange={this.inputChangeHandler}
-						onBlur={this.inputBlurHandler.bind(this, "email")}
-						value={this.state.loginForm["email"].value}
-						valid={this.state.loginForm["email"].valid}
-						touched={this.state.loginForm["email"].touched}
-					/>
-					<Input
-						id="password"
-						label="Password"
-						type="password"
-						control="input"
-						onChange={this.inputChangeHandler}
-						onBlur={this.inputBlurHandler.bind(this, "password")}
-						value={this.state.loginForm["password"].value}
-						valid={this.state.loginForm["password"].valid}
-						touched={this.state.loginForm["password"].touched}
-					/>
-					<Button design="raised" type="submit" loading={this.props.loading}>
-						Login
-					</Button>
-				</form>
 			</Auth>
 		);
 	}

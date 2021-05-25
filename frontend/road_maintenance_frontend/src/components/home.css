@@ -1,14 +1,14 @@
-.container {
+.container-main {
 	height: 90vh;
-	display: flex;
+	display: flexbox;
 	flex-direction: column;
 }
-.container-map {
+.container-main-map {
 	display: flex;
 	height: 90vh;
 }
-.container-map-box {
-	border: 5px #ccc solid;
+.container-main-map-box {
+	border: 5px #fff solid;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
 		0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
 		0 16px 16px rgba(0, 0, 0, 0.12);
@@ -18,8 +18,8 @@
 	padding: 0;
 }
 
-.container-map-legend {
-	border: 5px #ccc solid;
+.container-main-map-legend {
+	/* border: 5px #ccc solid; */
 	flex: 0.3;
 	margin: 20px;
 }

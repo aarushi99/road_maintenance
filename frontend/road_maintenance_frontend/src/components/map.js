@@ -19,9 +19,9 @@ function MapBox(props) {
 	useEffect(() => {
 		fetch("http://localhost:8080/markers/".concat(mId), {
 			headers: {
-			  Authorization: 'Bearer ' + props.token
-			}
-		  })
+				Authorization: "Bearer " + props.token,
+			},
+		})
 			.then((result) => {
 				//console.log("result : ", result);
 				if (result.status !== 200) {
@@ -33,13 +33,20 @@ function MapBox(props) {
 				//console.log("resData.markers:", resData.markers);
 				resData.markers.map((marker) => {
 					// console.log("marker key: ", marker._id);
+					// console.log("we ar here and mid is: ", mId);
 					setMarkerList((markerList) => [
 						...markerList,
 						<Marker
 							lat={marker.latitude}
 							lng={marker.longitude}
 							name={marker.address}
-							color="blue"
+							color={
+								marker.priority == "high"
+									? "red"
+									: marker.priority == "medium"
+									? "orange"
+									: "blue"
+							}
 							markerId={marker._id}
 						></Marker>,
 					]);

@@ -21,22 +21,30 @@ function History(props) {
       .then((resData) => {
         resData.marker_history.map((marker) => {
           setMarkerList((markerList) => [
-            ...markerList,
-            <ListItem
-              latitude={marker.latitude}
-              longitude={marker.longitude}
-              address={marker.address}
-              priority="low"
-              timestamp={marker.createdAt}
-            ></ListItem>,
-          ]);
+						...markerList,
+						<div className="list-group-item list-group-item-action py-1 lh-tight">
+							<ListItem
+								latitude={marker.latitude}
+								longitude={marker.longitude}
+								address={marker.address}
+								priority={marker.priority}
+                timestamp={marker.createdAt}
+							></ListItem>
+						</div>,
+					]);
         });
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  return <div>{markerList}</div>;
+  return (
+		<div className="d-flex flex-column align-items-stretch flex-shrink-0">
+			<div class="list-group list-group-flush border-bottom scrollarea">
+				{markerList}
+			</div>
+		</div>
+	);
 }
 
 export default History;
