@@ -7,6 +7,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 import Home from "./components/home";
 // import Login from "./components/login";
@@ -25,9 +26,11 @@ function App() {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const [authLoading, setAuthLoading] = useState(false);
-  const history = useHistory();
+  const history = createBrowserHistory();
+  //  const history = useHistory();
 
   useEffect(() => {
+    // const history = useHistory();
     const token_ = localStorage.getItem("token");
     const expiryDate = localStorage.getItem("expiryDate");
     if (!token || !expiryDate) {
@@ -148,20 +151,17 @@ function App() {
       })
       .then((resData) => {
         console.log(resData);
-        // this.setState({ isAuth: false, authLoading: false });
         setIsAuth(false);
         setAuthLoading(false);
-        // history.push("/");
+      })
+      .then(() => {
+        history.push("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
         setIsAuth(false);
         setAuthLoading(false);
-        // this.setState({
-        //   isAuth: false,
-        //   authLoading: false,
-        //   error: err
-        // });
       });
   };
 
@@ -191,12 +191,10 @@ function App() {
           />
         )}
       />
-      <Redirect to="/" />
     </Switch>
   );
 
   if (isAuth) {
-    // routes = <Navbar></Navbar>;
     routes = (
       <Fragment className="main-container">
         <div className="main-container-navbar">
