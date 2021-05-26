@@ -44,7 +44,7 @@ function ListView(props) {
 			<div
 				className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
 				style={{
-					"background-color": "rebeccapurple",
+					"background-color": "#0d6efd",
 					"border-top-right-radius": "5px",
 					"border-top-left-radius": "5px",
 				}}

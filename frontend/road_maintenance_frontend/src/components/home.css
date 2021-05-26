@@ -1,12 +1,18 @@
 .container-main {
 	height: 90vh;
 	display: flexbox;
-	flex-direction: column;
+	flex-direction: row;
 }
 .container-main-map {
 	display: flex;
-	height: 90vh;
+	height: 80vh;
 }
+
+.container-main-menu {
+	margin: 20px;
+	margin-bottom: 0px;
+}
+
 .container-main-map-box {
 	border: 5px #fff solid;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
@@ -18,7 +24,7 @@
 	padding: 0;
 }
 
-.container-main-map-legend {
+.container-main-map-list {
 	/* border: 5px #ccc solid; */
 	flex: 0.3;
 	margin: 20px;

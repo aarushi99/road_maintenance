@@ -1,54 +1,54 @@
 body {
-  margin: 0;
+	margin: 0;
 }
 
 main {
-  margin: 16px;
+	margin: 16px;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  background: rebeccapurple;
-  color: white;
-  font-family: Helvetica;
-  font-weight: 300;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+	display: flex;
+	align-items: center;
+	background: #0d6efd;
+	color: white;
+	font-family: Helvetica;
+	font-weight: 300;
+	/* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
 		0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-		0 16px 16px rgba(0, 0, 0, 0.12);
+		0 16px 16px rgba(0, 0, 0, 0.12); */
 }
 
 .header-title {
-  flex: 0.4;
-  text-align: center;
-  font-size: 150%;
-  transition: 0.2s ease;
+	flex: 0.4;
+	text-align: center;
+	font-size: 150%;
+	transition: 0.2s ease;
 }
 
 .header-item {
-  padding: 16px 16px;
-  cursor: pointer;
-  vertical-align: middle;
-  transition: 0.2s ease;
-  border-radius: 5px;
+	padding: 16px 16px;
+	cursor: pointer;
+	vertical-align: middle;
+	transition: 0.2s ease;
+	border-radius: 5px;
 }
 
 .header-item:hover {
-  background-color: rgb(129, 81, 177);
+	background-color: #3485ff;
 }
 
 .header-item-history {
-  margin-right: auto;
+	margin-right: auto;
 }
 
 .header-left {
-  display: flex;
-  flex: 0.3;
+	display: flex;
+	flex: 0.3;
 }
 
 .header-right {
-  display: flex;
-  flex: 0.3;
-  justify-content: flex-end;
-  /* align-self: flex-end; */
+	display: flex;
+	flex: 0.3;
+	justify-content: flex-end;
+	/* align-self: flex-end; */
 }
