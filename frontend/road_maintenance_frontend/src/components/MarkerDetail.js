@@ -5,6 +5,7 @@ import Dialogbox from "./Dialogbox";
 import RedIcon from "../images/marker icons/redIcon.png";
 import BlueIcon from "../images/marker icons/blueIcon.png";
 import OrangeIcon from "../images/marker icons/orangeIcon.png";
+import AllIcon from "../images/marker icons/all.png";
 
 function MarkerDetail(props) {
 	const params = props.match.params;
@@ -48,6 +49,14 @@ function MarkerDetail(props) {
 								src={BlueIcon}
 							/>
 							Low
+						</div>
+						<div>
+							<img
+								className="bi me-2"
+								style={{ width: "35px", height: "35px", cursor: "pointer" }}
+								src={AllIcon}
+							/>
+							All
 						</div>
 					</div>
 				</div>

@@ -7,6 +7,7 @@ import Dialogbox from "./Dialogbox";
 import RedIcon from "../images/marker icons/redIcon.png";
 import BlueIcon from "../images/marker icons/blueIcon.png";
 import OrangeIcon from "../images/marker icons/orangeIcon.png";
+import AllIcon from "../images/marker icons/all.png";
 
 function Home(props) {
 	console.log("token : ", props.token);
@@ -73,12 +74,27 @@ function Home(props) {
 							/>
 							Low
 						</div>
+						<div>
+							<img
+								onClick={() => {
+									setMap(null);
+									setMap(
+										<Map
+											priorityFilter=""
+											mId={props.mId}
+											token={props.token}
+										></Map>
+									);
+								}}
+								className="bi me-2"
+								style={{ width: "35px", height: "35px", cursor: "pointer" }}
+								src={AllIcon}
+							/>
+							All
+						</div>
 					</div>
 				</div>
-				<div className="container-main-map-box">
-					{/* <Map priorityFilter={pri} mId={props.mId} token={props.token}></Map> */}
-					{map}
-				</div>
+				<div className="container-main-map-box">{map}</div>
 			</div>
 			<div className="container-main-map-list overflow-auto">
 				<Listview mId={props.mId} token={props.token}></Listview>
