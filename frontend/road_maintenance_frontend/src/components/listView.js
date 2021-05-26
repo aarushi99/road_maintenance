@@ -4,7 +4,6 @@ import Marker from "./marker";
 import ListItem from "./listItem";
 import "bootstrap/dist/css/bootstrap.css";
 
-
 function ListView(props) {
 	const { mId } = props;
 	const [markerList, setMarkerList] = useState([]);
@@ -25,7 +24,10 @@ function ListView(props) {
 				resData.markers.map((marker) => {
 					setMarkerList((markerList) => [
 						...markerList,
-						<div className="list-group-item list-group-item-action py-1 lh-tight">
+						<div
+							className="list-group-item list-group-item-action py-1 lh-tight"
+							style={{ padding: "0px 16px" }}
+						>
 							<ListItem
 								latitude={marker.latitude}
 								longitude={marker.longitude}
