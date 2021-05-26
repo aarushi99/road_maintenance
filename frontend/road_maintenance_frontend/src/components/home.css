@@ -1,11 +1,13 @@
 .container-main {
 	height: 90vh;
-	display: flexbox;
+	display: flex;
 	flex-direction: row;
 }
 .container-main-map {
+	flex: 0.7;
 	display: flex;
-	height: 80vh;
+	flex-direction: column;
+	height: 90vh;
 }
 
 .container-main-menu {
@@ -20,7 +22,7 @@
 		0 16px 16px rgba(0, 0, 0, 0.12);
 	margin: 20px;
 	margin-right: 0;
-	flex: 0.7;
+	flex-grow: 1;
 	padding: 0;
 }
 
