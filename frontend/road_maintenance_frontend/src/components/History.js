@@ -39,7 +39,7 @@ function History(props) {
       });
   }, []);
   return (
-		<div className="d-flex flex-column align-items-stretch flex-shrink-0">
+		<div className="history-container d-flex flex-column align-items-stretch flex-shrink-0 overflow-auto">
 			<div class="list-group list-group-flush border-bottom scrollarea">
 				{markerList}
 			</div>
