@@ -8,7 +8,7 @@ import "./marker.css";
 
 const Marker = (props) => {
 	const { color, name, markerId } = props;
-	console.log("key : ", markerId, " name : ", name);
+	// console.log("key : ", markerId, " name : ", name);
 	const history = useHistory();
 	return (
 		// <div

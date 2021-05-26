@@ -13,49 +13,69 @@ const metadata = {
 };
 
 function MapBox(props) {
-	const { mId } = props;
+	const mId = props.mId;
+	const priorityFilter = props.priorityFilter;
+	// const [priorityFilter, setPriorityFilter] = useState(props.priorityFilter);
 	const [markerList, setMarkerList] = useState([]);
 
 	useEffect(() => {
+		setMarkerList([]);
 		fetch("http://localhost:8080/markers/".concat(mId), {
 			headers: {
 				Authorization: "Bearer " + props.token,
 			},
 		})
 			.then((result) => {
-				//console.log("result : ", result);
 				if (result.status !== 200) {
 					throw new Error("Failed to fetch markers");
 				}
 				return result.json();
 			})
 			.then((resData) => {
-				//console.log("resData.markers:", resData.markers);
 				resData.markers.map((marker) => {
-					// console.log("marker key: ", marker._id);
-					// console.log("we ar here and mid is: ", mId);
-					setMarkerList((markerList) => [
-						...markerList,
-						<Marker
-							lat={marker.latitude}
-							lng={marker.longitude}
-							name={marker.address}
-							color={
-								marker.priority == "high"
-									? "red"
-									: marker.priority == "medium"
-									? "orange"
-									: "blue"
-							}
-							markerId={marker._id}
-						></Marker>,
-					]);
+					if (priorityFilter == "") {
+						setMarkerList((markerList) => [
+							...markerList,
+							<Marker
+								lat={marker.latitude}
+								lng={marker.longitude}
+								name={marker.address}
+								color={
+									marker.priority == "high"
+										? "red"
+										: marker.priority == "medium"
+										? "orange"
+										: "blue"
+								}
+								markerId={marker._id}
+							></Marker>,
+						]);
+					} else {
+						if (marker.priority == priorityFilter) {
+							setMarkerList((markerList) => [
+								...markerList,
+								<Marker
+									lat={marker.latitude}
+									lng={marker.longitude}
+									name={marker.address}
+									color={
+										marker.priority == "high"
+											? "red"
+											: marker.priority == "medium"
+											? "orange"
+											: "blue"
+									}
+									markerId={marker._id}
+								></Marker>,
+							]);
+						}
+					}
 				});
 			})
 			.catch((err1) => {
 				console.log(err1);
 			});
-	}, []);
+	}, [priorityFilter]);
 
 	return (
 		<div style={{ height: "100%", width: "100%" }}>

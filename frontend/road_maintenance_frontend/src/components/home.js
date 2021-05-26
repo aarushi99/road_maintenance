@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import "./home.css";
 import Map from "./map";
@@ -10,6 +10,9 @@ import OrangeIcon from "../images/marker icons/orangeIcon.png";
 
 function Home(props) {
 	console.log("token : ", props.token);
+	const [map, setMap] = useState(
+		<Map priorityFilter="" mId={props.mId} token={props.token}></Map>
+	);
 	return (
 		<div className="container-main">
 			<div className="container-main-map">
@@ -18,6 +21,16 @@ function Home(props) {
 					<div className="container-main-menu-legend">
 						<div>
 							<img
+								onClick={() => {
+									setMap(null);
+									setMap(
+										<Map
+											priorityFilter="high"
+											mId={props.mId}
+											token={props.token}
+										></Map>
+									);
+								}}
 								className="bi me-2"
 								style={{ width: "35px", height: "35px", cursor: "pointer" }}
 								src={RedIcon}
@@ -26,6 +39,16 @@ function Home(props) {
 						</div>
 						<div>
 							<img
+								onClick={() => {
+									setMap(null);
+									setMap(
+										<Map
+											priorityFilter="medium"
+											mId={props.mId}
+											token={props.token}
+										></Map>
+									);
+								}}
 								className="bi me-2"
 								style={{ width: "35px", height: "35px", cursor: "pointer" }}
 								src={OrangeIcon}
@@ -34,6 +57,16 @@ function Home(props) {
 						</div>
 						<div>
 							<img
+								onClick={() => {
+									setMap(null);
+									setMap(
+										<Map
+											priorityFilter="low"
+											mId={props.mId}
+											token={props.token}
+										></Map>
+									);
+								}}
 								className="bi me-2"
 								style={{ width: "35px", height: "35px", cursor: "pointer" }}
 								src={BlueIcon}
@@ -43,7 +76,8 @@ function Home(props) {
 					</div>
 				</div>
 				<div className="container-main-map-box">
-					<Map mId={props.mId} token={props.token}></Map>
+					{/* <Map priorityFilter={pri} mId={props.mId} token={props.token}></Map> */}
+					{map}
 				</div>
 			</div>
 			<div className="container-main-map-list overflow-auto">

@@ -52,7 +52,7 @@ function MarkerDetail(props) {
 					</div>
 				</div>
 				<div className="container-main-map-box">
-					<Map mId={params.mId} token={props.token}></Map>
+					<Map priorityFilter="" mId={params.mId} token={props.token}></Map>
 				</div>
 			</div>
 			<div className="container-main-map-list overflow-auto">
