@@ -117,6 +117,7 @@ export default function FormDialog(props) {
 								fullWidth
 							/>
 							<Button
+								className="mt-2"
 								onClick={() => {
 									setOpenLP(true);
 								}}
@@ -129,7 +130,9 @@ export default function FormDialog(props) {
 					) : (
 						<MapPicker callback={handleCallback} />
 					)}
-					<InputLabel id="demo-simple-select-label" className="mt-2">Priority</InputLabel>
+					<InputLabel id="demo-simple-select-label" className="mt-2">
+						Priority
+					</InputLabel>
 					<Select
 						labelId="demo-simple-select-label"
 						id="demo-simple-select"
