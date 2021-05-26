@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
 			background: "#0d6efd",
+      height: "47px"
 		},
 	},
 }));
