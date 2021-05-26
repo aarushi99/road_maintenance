@@ -129,7 +129,7 @@ export default function FormDialog(props) {
 					) : (
 						<MapPicker callback={handleCallback} />
 					)}
-					<InputLabel id="demo-simple-select-label">Priority</InputLabel>
+					<InputLabel id="demo-simple-select-label" className="mt-2">Priority</InputLabel>
 					<Select
 						labelId="demo-simple-select-label"
 						id="demo-simple-select"
@@ -144,7 +144,7 @@ export default function FormDialog(props) {
 					</Select>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose} color="primary">
+					<Button onClick={handleClose} variant="contained" color="primary">
 						Cancel
 					</Button>
 					<Button
@@ -152,6 +152,7 @@ export default function FormDialog(props) {
 							handleSubmit();
 							handleClose();
 						}}
+						variant="contained"
 						color="primary"
 					>
 						Submit

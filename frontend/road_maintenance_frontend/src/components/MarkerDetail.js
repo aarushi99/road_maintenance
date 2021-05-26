@@ -56,7 +56,16 @@ function MarkerDetail(props) {
 				</div>
 			</div>
 			<div className="container-main-map-list overflow-auto">
-				<h3>Marker History</h3>
+				<div
+					className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
+					style={{
+						"background-color": "#0d6efd",
+						"border-top-right-radius": "5px",
+						"border-top-left-radius": "5px",
+					}}
+				>
+					<span className="fs-5 fw-semibold text-white">Markers History</span>
+				</div>
 				<History mId={params.mId} token={props.token}></History>
 			</div>
 		</div>

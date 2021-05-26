@@ -22,27 +22,46 @@ const App = (props) => {
 
 	function handleResetLocation() {
 		setDefaultLocation({ ...DefaultLocation });
+		setLocation(defaultLocation);
 		setZoom(DefaultZoom);
 	}
 
-	// useEffect(() => {
-	// 	props.callback(location.lat, location.lng);
-	// }, [location]);
-
 	return (
 		<>
-			<button onClick={handleResetLocation}>Reset Location</button>
-			<label>Latitute:</label>
-			<input type="text" value={location.lat} disabled />
-			<label>Longitute:</label>
-			<input type="text" value={location.lng} disabled />
-			<label>Zoom:</label>
-			<input type="text" value={zoom} disabled />
+			<div>
+				<button className="btn btn-primary" onClick={handleResetLocation}>
+					Reset Location
+				</button>
+			</div>
+			<div class="d-flex pt-3 pb-3">
+				<div class="form-floating ">
+					<input
+						class="form-control"
+						type="text"
+						value={location.lat}
+						disabled
+					/>
+					<label for="floatingInput">Latitude</label>
+				</div>
+				<div class="form-floating">
+					<input
+						class="form-control"
+						type="text"
+						value={location.lng}
+						disabled
+					/>
+					<label for="floatingInput">Longitude</label>
+				</div>
+				<div class="form-floating">
+					<input class="form-control" type="text" value={zoom} disabled />
+					<label for="floatingInput">Zoom</label>
+				</div>
+			</div>
 
 			<MapPicker
 				defaultLocation={defaultLocation}
 				zoom={zoom}
-				style={{ height: "300px" }}
+				style={{ height: "280px" }}
 				onChangeLocation={handleChangeLocation}
 				onChangeZoom={handleChangeZoom}
 				apiKey="AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo"
