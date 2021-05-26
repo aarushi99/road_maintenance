@@ -27,6 +27,10 @@ const HistorySchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: "Marker",
 		},
+		priority: {
+			type: String,
+			required: true,
+		},
 	},
 	{ timestamps: true }
 );

@@ -48,6 +48,7 @@ exports.postMarker = (req, res, next) => {
 							longitude: longitude,
 							address: address,
 							markerId: result_marker._id,
+							priority: priority,
 						});
 						new_entry.save().then((result) => {
 							console.log("Entry added successfully");

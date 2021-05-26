@@ -9,7 +9,7 @@ const metadata = {
 		lat: 30.7333,
 		lng: 76.7794,
 	},
-	zoom: 15,
+	zoom: 14,
 };
 
 function MapBox(props) {
