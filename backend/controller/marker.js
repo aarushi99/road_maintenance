@@ -45,7 +45,14 @@ exports.postMarker = (req, res, next) => {
         no_of_flags: 0,
         priority: priority,
         isCompleted: false,
-        address: resData[0].label,
+        address:
+          resData[0].name +
+          "," +
+          resData[0].neighbourhood +
+          "," +
+          resData[0].region +
+          "," +
+          resData[0].country,
         isFalse: false,
       });
       MarkerModel.findOne(filter)
@@ -58,7 +65,14 @@ exports.postMarker = (req, res, next) => {
                 const new_entry = new HistoryModel({
                   latitude: latitude,
                   longitude: longitude,
-                  address: resData[0].label,
+                  address:
+                    resData[0].name +
+                    "," +
+                    resData[0].neighbourhood +
+                    "," +
+                    resData[0].region +
+                    "," +
+                    resData[0].country,
                   markerId: result_marker._id,
                   priority: priority,
                 });
@@ -81,7 +95,14 @@ exports.postMarker = (req, res, next) => {
                 const new_entry = new HistoryModel({
                   latitude: latitude,
                   longitude: longitude,
-                  address: resData[0].label,
+                  address:
+                    resData[0].name +
+                    "," +
+                    resData[0].neighbourhood +
+                    "," +
+                    resData[0].region +
+                    "," +
+                    resData[0].country,
                   markerId: found_marker._id,
                 });
                 new_entry.save().then((result) => {
