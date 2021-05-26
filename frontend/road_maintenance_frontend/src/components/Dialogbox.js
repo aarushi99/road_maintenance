@@ -10,12 +10,13 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
+import MapPicker from "./MapPicker";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
 			background: "#0d6efd",
-      height: "47px"
+			height: "47px",
 		},
 	},
 }));
@@ -26,6 +27,7 @@ export default function FormDialog(props) {
 	const [longitude, setLongitude] = React.useState(0);
 	const [priority, setPriority] = React.useState("low");
 	const classes = useStyles();
+	const [openLP, setOpenLP] = React.useState(false);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -33,6 +35,11 @@ export default function FormDialog(props) {
 
 	const handleClose = () => {
 		setOpen(false);
+	};
+
+	const handleCallback = (lat, lng) => {
+		setLatitude(lat);
+		setLongitude(lng);
 	};
 
 	const handleSubmit = () => {
@@ -85,28 +92,43 @@ export default function FormDialog(props) {
 						Please add the marker details best to your information. Refrain from
 						adding false alerts.
 					</DialogContentText>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="name"
-						label="Latitude"
-						type="string"
-						onChange={(e) => {
-							setLatitude(e.target.value);
-						}}
-						fullWidth
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="name"
-						label="Longitude"
-						type="string"
-						onChange={(e) => {
-							setLongitude(e.target.value);
-						}}
-						fullWidth
-					/>
+					{!openLP ? (
+						<div>
+							<TextField
+								autoFocus
+								margin="dense"
+								id="name"
+								label="Latitude"
+								type="string"
+								onChange={(e) => {
+									setLatitude(e.target.value);
+								}}
+								fullWidth
+							/>
+							<TextField
+								autoFocus
+								margin="dense"
+								id="name"
+								label="Longitude"
+								type="string"
+								onChange={(e) => {
+									setLongitude(e.target.value);
+								}}
+								fullWidth
+							/>
+							<Button
+								onClick={() => {
+									setOpenLP(true);
+								}}
+								variant="contained"
+								color="primary"
+							>
+								Location Picker
+							</Button>
+						</div>
+					) : (
+						<MapPicker callback={handleCallback} />
+					)}
 					<InputLabel id="demo-simple-select-label">Priority</InputLabel>
 					<Select
 						labelId="demo-simple-select-label"
