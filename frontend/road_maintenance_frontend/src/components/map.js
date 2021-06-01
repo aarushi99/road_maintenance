@@ -67,6 +67,7 @@ function MapBox(props) {
 											: "blue"
 									}
 									markerId={marker._id}
+									isComplete={marker.isCompleted}
 								></Marker>,
 							]);
 						}
