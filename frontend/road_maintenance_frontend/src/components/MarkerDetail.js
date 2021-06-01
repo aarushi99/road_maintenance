@@ -11,9 +11,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-	root: {
+	root1: {
 		"& > *": {
 			background: "#d93025",
+			height: "47px",
+		},
+	},
+	root2: {
+		"& > *": {
+			background: "#27ae60",
 			height: "47px",
 		},
 	},
@@ -34,6 +40,23 @@ function MarkerDetail(props) {
 			.then((result) => {
 				console.log(result.message);
 				window.alert("Marker Deleted Successfully");
+				history.replace("/");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	const handleComplete = () => {
+		fetch("http://localhost:8080/markers/complete/" + params.mId, {
+			method: "POST",
+			headers: {
+				Authorization: "Bearer " + props.token,
+			},
+		})
+			.then((result) => {
+				console.log(result.message);
+				window.alert("Marked as completed!");
 				history.replace("/");
 			})
 			.catch((err) => {
@@ -91,7 +114,17 @@ function MarkerDetail(props) {
 							All
 						</div>
 					</div>
-					<div className={classes.root}>
+					<div className={classes.root2}>
+						<Button
+							className="mr-2"
+							variant="contained"
+							color="primary"
+							onClick={handleComplete}
+						>
+							Mark as Completed
+						</Button>
+					</div>
+					<div className={classes.root1}>
 						<Button variant="contained" color="primary" onClick={handleDelete}>
 							- Delete Marker
 						</Button>

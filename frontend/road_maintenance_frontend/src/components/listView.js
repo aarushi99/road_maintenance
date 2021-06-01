@@ -33,6 +33,7 @@ function ListView(props) {
 								longitude={marker.longitude}
 								address={marker.address}
 								priority={marker.priority}
+								isComplete={marker.isCompleted}
 							></ListItem>
 						</div>,
 					]);

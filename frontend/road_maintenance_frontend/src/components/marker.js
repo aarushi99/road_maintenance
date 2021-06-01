@@ -4,10 +4,11 @@ import MarkerIcon from "../images/marker_icon.png";
 import RedIcon from "../images/marker icons/redIcon.png";
 import BlueIcon from "../images/marker icons/blueIcon.png";
 import OrangeIcon from "../images/marker icons/orangeIcon.png";
+import GreenIcon from "../images/marker icons/green.png";
 import "./marker.css";
 
 const Marker = (props) => {
-	const { color, name, markerId } = props;
+	const { color, name, markerId, isComplete } = props;
 	// console.log("key : ", markerId, " name : ", name);
 	const history = useHistory();
 	return (
@@ -28,6 +29,15 @@ const Marker = (props) => {
 			className="bi me-2 marker"
 			style={{ width: "40px", height: "40px", cursor: "pointer" }}
 			src={color == "red" ? RedIcon : color == "orange" ? OrangeIcon : BlueIcon}
+			src={
+				isComplete
+					? GreenIcon
+					: color == "red"
+					? RedIcon
+					: color == "orange"
+					? OrangeIcon
+					: BlueIcon
+			}
 		/>
 	);
 };

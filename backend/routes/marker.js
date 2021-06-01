@@ -13,4 +13,6 @@ router.post("/postmarker", isAuth, markerController.postMarker);
 
 router.post("/delete/:mId", isAuth, markerController.deleteMarker);
 
+router.post("/complete/:mId", isAuth, markerController.completeMarker);
+
 module.exports = router;

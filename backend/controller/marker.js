@@ -165,3 +165,24 @@ exports.deleteMarker = (req, res, next) => {
 			console.log(err);
 		});
 };
+
+exports.completeMarker = (req, res, next) => {
+	MarkerModel.findOne({ _id: req.params.mId })
+		.then((result) => {
+			result.isCompleted = true;
+			result
+				.save()
+				.then((response) => {
+					console.log("Marker marked as complete");
+					res.status(202).json({
+						message: "Marker marked as complete",
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
