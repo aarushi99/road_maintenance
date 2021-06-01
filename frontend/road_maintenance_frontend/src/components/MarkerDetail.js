@@ -6,9 +6,41 @@ import RedIcon from "../images/marker icons/redIcon.png";
 import BlueIcon from "../images/marker icons/blueIcon.png";
 import OrangeIcon from "../images/marker icons/orangeIcon.png";
 import AllIcon from "../images/marker icons/all.png";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		"& > *": {
+			background: "#d93025",
+			height: "47px",
+		},
+	},
+}));
 
 function MarkerDetail(props) {
 	const params = props.match.params;
+	const classes = useStyles();
+	const history = useHistory();
+
+	const handleDelete = () => {
+		fetch("http://localhost:8080/markers/delete/" + params.mId, {
+			method: "POST",
+			headers: {
+				Authorization: "Bearer " + props.token,
+			},
+		})
+			.then((result) => {
+				console.log(result.message);
+				window.alert("Marker Deleted Successfully");
+				history.replace("/");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		// <div className="container-main">
 		//   <div className="container-main-map">
@@ -58,6 +90,11 @@ function MarkerDetail(props) {
 							/>
 							All
 						</div>
+					</div>
+					<div className={classes.root}>
+						<Button variant="contained" color="primary" onClick={handleDelete}>
+							- Delete Marker
+						</Button>
 					</div>
 				</div>
 				<div className="container-main-map-box">
