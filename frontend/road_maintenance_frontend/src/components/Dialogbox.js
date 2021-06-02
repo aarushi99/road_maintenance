@@ -43,6 +43,7 @@ export default function FormDialog(props) {
   };
 
   const handleSubmit = () => {
+    console.log("USER: ", props.userName);
     fetch("http://localhost:8080/markers/postmarker", {
       method: "POST",
       headers: {
@@ -53,6 +54,7 @@ export default function FormDialog(props) {
         latitude: latitude,
         longitude: longitude,
         priority: priority,
+        creator: props.userName,
       }),
     })
       .then((res) => {
@@ -63,6 +65,7 @@ export default function FormDialog(props) {
         return res.json();
       })
       .then((resData) => {
+        window.alert("Marker created successfully");
         console.log("Created sucessfully");
         console.log(resData);
       })
