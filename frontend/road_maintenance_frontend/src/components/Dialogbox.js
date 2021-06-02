@@ -15,9 +15,16 @@ import MapPicker from "./MapPicker";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      background: "#0d6efd",
-      height: "47px",
-    },
+			background: "#0d6efd",
+			height: "47px",
+			border: "2px solid #0d6efd",
+			"&:hover": {
+				background: "#fff",
+				color: "#0d6efd",
+				boxShadow: "none",
+			},
+		},
+    
   },
 }));
 

@@ -1,14 +1,30 @@
 .list-item {
-  display: flex;
-  padding: 5px;
-  margin: 3px;
+	display: flex;
+	padding: 5px;
+	margin: 3px;
 }
 .list-item > img {
-  height: 35px;
-  width: 35px;
-  object-fit: contain;
+	height: 35px;
+	width: 35px;
+	object-fit: contain;
 }
 
 .list-item-info {
-  font-size: 90%;
+	flex-grow: 1;
+	font-size: 90%;
+	display: flex;
+	/* justify-content: space-between; */
+}
+
+.list-item-info-address {
+	flex: 0.4;
+}
+
+.list-item-info-priority {
+	flex: 0.2;
+}
+
+.list-item-info-creator {
+	flex: 0.4;
+	text-align: end;
 }

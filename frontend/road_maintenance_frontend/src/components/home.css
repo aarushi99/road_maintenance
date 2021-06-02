@@ -39,8 +39,8 @@
 .container-main-menu-legend {
 	display: flex;
 	justify-content: space-between;
-	/* width: 22rem; */
-	flex: 0.5;
+	width: 26rem;
+	/* flex: 0.5; */
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 20px;
