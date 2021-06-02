@@ -11,6 +11,7 @@
 
 .list-item-info {
 	flex-grow: 1;
+	flex-wrap: wrap;
 	font-size: 90%;
 	display: flex;
 	/* justify-content: space-between; */
@@ -18,13 +19,16 @@
 
 .list-item-info-address {
 	flex: 0.4;
+	min-width: 300px;
 }
 
 .list-item-info-priority {
-	flex: 0.2;
+	flex: 0.4;
+	min-width: 200px;
 }
 
 .list-item-info-creator {
-	flex: 0.4;
-	text-align: end;
+	flex: 0.2;
+	min-width: 300px;
+	/* text-align: end; */
 }
