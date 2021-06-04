@@ -4,8 +4,7 @@ import "./History.css";
 
 function History(props) {
 	const [markerList, setMarkerList] = useState([]);
-	// const { mId } = props;
-	// console.log("mid history component :", mId);
+	
 	useEffect(() => {
 		fetch("http://localhost:8080/history/".concat(props.mId), {
 			headers: {

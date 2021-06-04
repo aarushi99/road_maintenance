@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 app.use("/markers", markerRoutes);
 app.use("/history", historyRoutes);
-app.use('/auth', authRoutes);
+app.use("/auth", authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -33,12 +33,10 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://rajat:rajat1169@cluster0.4i2j8.mongodb.net/road_maintenance_database?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
     console.log("Connected Successfuly");
-    app.listen(8080);
+    app.listen(process.env.PORT);
   })
   .catch((err) => {
     console.log("HERE IS AN ERROR");

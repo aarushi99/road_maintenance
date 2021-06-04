@@ -9,18 +9,10 @@ import "./marker.css";
 
 const Marker = (props) => {
 	const { color, name, markerId, isComplete } = props;
-	// console.log("key : ", markerId, " name : ", name);
+	
 	const history = useHistory();
 	return (
-		// <div
-		// 	onClick={() => {
-		// 		console.log("clicking on marker");
-		// 		history.push(markerId);
-		// 	}}
-		// 	className="marker"
-		// 	style={{ backgroundColor: color, cursor: "pointer" }}
-		// 	title={name}
-		// />
+		
 		<img
 			onClick={() => {
 				console.log("clicking on marker");
